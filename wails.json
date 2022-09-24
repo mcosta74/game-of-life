@@ -1,0 +1,12 @@
+{
+  "name": "game-of-life",
+  "outputfilename": "game-of-life",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Massimo Costa",
+    "email": "massimoc@filewave.com"
+  }
+}
