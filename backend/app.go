@@ -98,6 +98,7 @@ func (a *App) Reset() Board {
 	} else {
 		a.randomize()
 	}
+	a.board.Generation = 0
 	return a.board
 }
 

@@ -10,38 +10,26 @@ import {backend} from "@wailsjs/go/models";
 import {EventsOn} from "@wailsjs/runtime";
 
 
+
 function App() {
     const [running, setRunning] = useState<boolean>(false);
-    const [columns, setColumns] = useState<number>(100);
-    const [rows, setRows] = useState<number>(100);
-    const [cells, setCells] = useState<boolean[][] | null>(null);
-    const [generation, setGeneration] = useState<number>(0);
+    const [board, setBoard] = useState<backend.Board>(new backend.Board());
 
     useEffect(() => {
         const loadData = () => {
-            Reset().then((data: backend.Board) => {
-                setColumns(data.columns);
-                setRows(data.rows);
-                setCells(data.cells);
-            });
+            Reset().then((data: backend.Board) => setBoard(data));
         };
-
         loadData();
     }, []);
 
-    EventsOn("dataUpdate", (board: backend.Board) => {
-        setCells(board.cells)
-        setGeneration(board.generation);
-    });
+    EventsOn("dataUpdate", (board: backend.Board) => setBoard(board));
 
     const onStartStop = () => {
         ToggleStatus().then(status => setRunning(status));
     };
 
     const onReset = () => {
-        Reset().then((data: backend.Board) => {
-            setCells(data.cells);
-        });
+        Reset().then((data: backend.Board) => setBoard(data));
     }
 
     const onNext = () => {
@@ -56,10 +44,7 @@ function App() {
     };
 
     const canvasProps: CanvasProps = {
-        columns,
-        rows,
-        cells,
-        generation,
+        board
     };
 
     return (

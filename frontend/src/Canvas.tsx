@@ -1,36 +1,32 @@
+import { backend } from "@wailsjs/go/models";
 import { useEffect, useRef } from "react";
 
-import { LogDebug } from '@wailsjs/runtime';
-
 export interface CanvasProps {
-  columns: number;
-  rows: number;
-  cells: boolean[][] | null;
-  generation: number;
+  board?: backend.Board
 };
 
 export const Canvas = (props: CanvasProps) => {
-  const {columns, rows, cells} = props;
+  const {board} = props;
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const draw = (ctx: CanvasRenderingContext2D) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    if (cells === null) {
+    if (board === undefined) {
       return;
     }
 
-    const cellSize = ctx.canvas.width/columns;
+    const cellSize = ctx.canvas.width/board.columns;
 
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < columns; j++) {
+    for (let i = 0; i < board.rows; i++) {
+      for (let j = 0; j < board.columns; j++) {
         ctx.strokeStyle = '#7f7f7f';
         ctx.fillStyle = '#ffff7f';
 
         const path = new Path2D();
         path.arc((j+0.5)*cellSize, (i+0.5)*cellSize, cellSize/2, 0, Math.PI*2)
 
-        if (cells[i][j]) {
+        if (board.cells[i][j]) {
           ctx.fill(path);
         } else {
           ctx.stroke(path);
@@ -55,10 +51,10 @@ export const Canvas = (props: CanvasProps) => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <label className="text-lg">Generation: {props.generation} </label>
-      <canvas width="600" height="600" ref={canvasRef} className="">
-        Canvas not supported
-      </canvas>
-    </div>
-  )
+        <label className="text-lg">Generation: {board?.generation} </label>
+        <canvas width="600" height="600" ref={canvasRef} className="">
+          Canvas not supported
+        </canvas>
+    </div>)
+
 };
