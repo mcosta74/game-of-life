@@ -6,6 +6,7 @@ export interface CanvasProps {
   columns: number;
   rows: number;
   cells: boolean[][] | null;
+  generation: number;
 };
 
 export const Canvas = (props: CanvasProps) => {
@@ -53,8 +54,11 @@ export const Canvas = (props: CanvasProps) => {
   }, [canvasRef.current, draw]);
 
   return (
-    <canvas width="600" height="600" ref={canvasRef} className="">
-      Canvas not supported
-    </canvas>
+    <div className="flex flex-col items-center gap-2">
+      <label className="text-lg">Generation: {props.generation} </label>
+      <canvas width="600" height="600" ref={canvasRef} className="">
+        Canvas not supported
+      </canvas>
+    </div>
   )
 };

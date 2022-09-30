@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Canvas, CanvasProps } from "./Canvas"
 import { Toolbar, ToolbarProps } from "./Toolbar"
 
-import {Reset, ToggleStatus} from "@wailsjs/go/backend/App";
+import {Reset, ToggleStatus, Next} from "@wailsjs/go/backend/App";
 
 import {backend} from "@wailsjs/go/models";
 import {EventsOn} from "@wailsjs/runtime";
@@ -15,6 +15,7 @@ function App() {
     const [columns, setColumns] = useState<number>(100);
     const [rows, setRows] = useState<number>(100);
     const [cells, setCells] = useState<boolean[][] | null>(null);
+    const [generation, setGeneration] = useState<number>(0);
 
     useEffect(() => {
         const loadData = () => {
@@ -28,7 +29,10 @@ function App() {
         loadData();
     }, []);
 
-    EventsOn("dataUpdate", (board: backend.Board) => setCells(board.cells));
+    EventsOn("dataUpdate", (board: backend.Board) => {
+        setCells(board.cells)
+        setGeneration(board.generation);
+    });
 
     const onStartStop = () => {
         ToggleStatus().then(status => setRunning(status));
@@ -40,16 +44,22 @@ function App() {
         });
     }
 
+    const onNext = () => {
+        Next().then(() => {});
+    }
+
     const toolbarProps: ToolbarProps = {
         running,
         onStartStop,
         onReset,
+        onNext,
     };
 
     const canvasProps: CanvasProps = {
         columns,
         rows,
         cells,
+        generation,
     };
 
     return (

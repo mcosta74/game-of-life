@@ -4,6 +4,7 @@ export namespace backend {
 	    columns: number;
 	    rows: number;
 	    cells: boolean[][];
+	    generation: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new Board(source);
@@ -14,6 +15,7 @@ export namespace backend {
 	        this.columns = source["columns"];
 	        this.rows = source["rows"];
 	        this.cells = source["cells"];
+	        this.generation = source["generation"];
 	    }
 	}
 

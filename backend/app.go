@@ -16,10 +16,11 @@ const (
 type Cells = [][]bool
 
 type Board struct {
-	Columns  int   `json:"columns"`
-	Rows     int   `json:"rows"`
-	Cells    Cells `json:"cells"`
-	previous Cells `json:"-"`
+	Columns    int   `json:"columns"`
+	Rows       int   `json:"rows"`
+	Cells      Cells `json:"cells"`
+	previous   Cells `json:"-"`
+	Generation int   `json:"generation"`
 }
 
 func (b *Board) copyPrevious() {
@@ -141,15 +142,17 @@ func (a *App) nextGeneration() {
 	for i := 0; i < a.board.Rows; i++ {
 		for j := 0; j < a.board.Columns; j++ {
 			alive := a.board.aliveNeighbors(i, j)
-			// runtime.LogDebugf(a.ctx, "Cell(%d, %d) - neighbors alive: %d", i, j, alive)
 			if a.board.previous[i][j] {
-				// runtime.LogDebugf(a.ctx, "Cell Alive, Now: %v", (alive == 2 || alive == 3))
 				a.board.Cells[i][j] = (alive == 2 || alive == 3)
 			} else {
-				// runtime.LogDebugf(a.ctx, "Cell Dead, Now: %v", (alive == 3))
 				a.board.Cells[i][j] = (alive == 3)
 			}
 		}
 	}
+	a.board.Generation++
+}
 
+func (a *App) Next() {
+	a.nextGeneration()
+	runtime.EventsEmit(a.ctx, "dataUpdate", a.board)
 }
