@@ -5,6 +5,7 @@ import (
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
+	"github.com/wailsapp/wails/v2/pkg/options/mac"
 
 	"github.com/mcosta74/game-of-life/backend"
 )
@@ -26,6 +27,12 @@ func main() {
 		OnStartup:        app.Startup,
 		Bind: []interface{}{
 			app,
+		},
+		Mac: &mac.Options{
+			About: &mac.AboutInfo{
+				Title:   "Game of Life",
+				Message: "© 2022 - Massimo Costa",
+			},
 		},
 	})
 

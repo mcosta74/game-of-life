@@ -1,5 +1,7 @@
 # Game of Life
 
+![build](https://github.com/mcosta74/game-of-life/actions/workflows/build.yml/badge.svg)
+
 Simple implementation of Conway's "Game of Life" using [wails.io](https://wails.io/)
 
 The user interface is quite simple

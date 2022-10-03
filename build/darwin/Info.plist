@@ -3,7 +3,7 @@
 	<key>CFBundlePackageType</key><string>APPL</string>
 	<key>CFBundleName</key><string>{{.Info.ProductName}}</string>
 	<key>CFBundleExecutable</key><string>{{.Name}}</string>
-	<key>CFBundleIdentifier</key><string>com.wails.{{.Name}}</string>
+	<key>CFBundleIdentifier</key><string>io.massimocosta.game-of-life</string>
 	<key>CFBundleVersion</key><string>{{.Info.ProductVersion}}</string>
 	<key>CFBundleGetInfoString</key><string>{{.Info.Comments}}</string>
 	<key>CFBundleShortVersionString</key><string>{{.Info.ProductVersion}}</string>
