@@ -2,7 +2,7 @@ module github.com/mcosta74/game-of-life
 
 go 1.18
 
-require github.com/wailsapp/wails/v2 v2.1.0
+require github.com/wailsapp/wails/v2 v2.3.1
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect
@@ -20,11 +20,13 @@ require (
 	github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.2 // indirect
+	github.com/samber/lo v1.27.1 // indirect
 	github.com/tkrajina/go-reflector v0.5.6 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/wailsapp/mimetype v1.4.1 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
+	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
 	golang.org/x/net v0.1.0 // indirect
 	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/text v0.4.0 // indirect
