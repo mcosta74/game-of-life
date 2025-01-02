@@ -6,7 +6,8 @@ Simple implementation of Conway's "Game of Life" using [wails.io](https://wails.
 
 The user interface is quite simple
 
-![User Interface](Screenshot.png)
+![User Interface Light](game-of-life-light.png)
+![User Interface Dark](game-of-life-dark.png)
 
 There're 3 buttons and a canvas the prints the nth generation of the cells.
 
@@ -18,6 +19,6 @@ There're 3 buttons and a canvas the prints the nth generation of the cells.
 
 If you want to build the code your self you have to 
 
-* Install Go (1.18+)
+* Install Go (1.21+)
 * Install Wails
 * Run `wails dev` and have fun
