@@ -35,8 +35,10 @@ export class CanvasComponent {
 
     for (let i = 0; i < this.boardService.board().rows; i++) {
       for (let j = 0; j < this.boardService.board().columns; j++) {
-        ctx.strokeStyle = style.getPropertyValue('--mat-sys-secondary');
-        ctx.fillStyle = '#ffff7f';
+        ctx.strokeStyle = style.getPropertyValue(
+          '--cds-alias-object-interaction-background-active'
+        );
+        ctx.fillStyle = style.getPropertyValue('--cds-alias-status-warning');
 
         const path = new Path2D();
         path.arc(
