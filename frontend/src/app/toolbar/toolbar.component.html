@@ -1,5 +1,11 @@
-<div class="toolbar">
-    <button class="btn btn-primary" (click)="toggleStatus()">{{startButtonText()}}</button>
-    <button class="btn btn-primary" (click)="next()">Next</button>
-    <button class="btn btn-primary" (click)="reset()">Reset</button>
+<div class="clr-row clr-justify-content-center">
+    <button class="btn btn-icon btn-primary" (click)="toggleStatus()">
+        <cds-icon [attr.shape]="startButtonShape()"></cds-icon>
+    </button>
+    <button class="btn btn-icon btn-primary" (click)="next()">
+        <cds-icon shape="step-forward"></cds-icon>
+    </button>
+    <button class="btn btn-icon btn-primary" (click)="reset()">
+        <cds-icon shape="stop"></cds-icon>
+    </button>
 </div>

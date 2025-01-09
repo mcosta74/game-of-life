@@ -8,9 +8,10 @@ import { BoardService } from '../board.service';
   styleUrl: './canvas.component.scss'
 })
 export class CanvasComponent {
-  canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
+  private canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
+
   private boardService = inject(BoardService);
-  generation = computed(() => this.boardService.board().generation);
+  board = this.boardService.board;
 
   constructor() { 
     effect(() => {
