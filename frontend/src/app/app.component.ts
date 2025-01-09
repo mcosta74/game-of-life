@@ -12,7 +12,7 @@ import { ThemeService } from './theme.service';
     CanvasComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styles: ``,
 })
 export class AppComponent implements OnInit {
   private themeService = inject(ThemeService);

@@ -2,9 +2,10 @@ canvas {
     border: 1px solid black;
 }
 
-.canvas {
+:host {
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    padding: 1rem;
 }
